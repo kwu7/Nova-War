@@ -7,9 +7,9 @@ We grew up playing video games and thought that this would be a good homage to o
 ### How
 Using Scene Builder and JavaFX, we will develop the GUI and take key inputs and button inputs. Finally, we will use Slick2D for graphics and animations.
 ## Deliverables (what you are going to deliver at the end of the semester)
-1. Good graphics and animations
-2. Great logic and back-end work
-3. Documentation and project plan
+- Good graphics and animations
+- Great logic and back-end work
+- Documentation and project plan
 
 ## Plan (6 weeks from Oct 29 – Dec 7)
 - Week #1: 
@@ -17,7 +17,7 @@ Using Scene Builder and JavaFX, we will develop the GUI and take key inputs and 
   2. Begin abstract layout of the game
 
 ## Team members
-- Yvedear Jospeh (Back-end Developer)
-- Kevin Wu (Front-end Developer)
+- Yvedear Jospeh (Front-end/Back-end Developer)
+- Kevin Wu (Front-end/Back-end Developer)
 
 
