@@ -12,9 +12,12 @@ Using Scene Builder and JavaFX, we will develop the GUI and take key inputs and 
 3. Documentation and project plan
 
 ## Plan (6 weeks from Oct 29 – Dec 7)
-Week #1: Set up UML for classes and objects and begin abstract layout of the game
+- Week #1: 
+  1. Set up UML for classes and objects
+  2. Begin abstract layout of the game
 
 ## Team members
-Yvedear Jospeh & Kevin Wu
+- Yvedear Jospeh (Back-end Developer)
+- Kevin Wu (Front-end Developer)
 
 
