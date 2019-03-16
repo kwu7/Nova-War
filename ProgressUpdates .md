@@ -8,7 +8,7 @@
 
 ### What will you do this week?
 * Design UML diagram for classes within our game
-* Create java project based of UML diagram
+* Create java project for for game
 
 ### Any blocking issues/challenges need to be addressed?
 * None
