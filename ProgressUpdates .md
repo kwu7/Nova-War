@@ -1,22 +1,21 @@
-# Progress Updates (Oct 29 - Nov 30)
+# Progress Updates (March 8 - April 19)
 
-## Week 1 (Oct 29 - Nov 5)
+## Week 1 (March 8 - March 15)
 
 ### What did your team do last week?
 * Set up repository
-* Identify deliverables
 * Make plan
 
 ### What will you do this week?
-* Investigate different solutions
-* Prototype plugin server
+* Design UML diagram for classes within our game
+* Create java project based of UML diagram
 
 ### Any blocking issues/challenges need to be addressed?
-* Get server to work on Linux machines, but not Windows
-* Client-server communication is flaky
+* None
 
 
-## Week 2 (Nov 5 - Nov 12)
+
+## Week 2 (March 16 - March 23)
 
 ### What did your team do last week?
 ...
