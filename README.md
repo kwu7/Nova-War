@@ -15,6 +15,10 @@ Using Scene Builder and JavaFX, we will develop the GUI and take key inputs and 
 - Week #1: 
   1. Set up UML for classes and objects
   2. Begin abstract layout of the game
+- Week #2: 
+  1. Added Alex to the group
+  2. Began reading Slick2D API
+  3. Began creating the Scene and menu for the game
 
 ## Team members
 - Yvedear Jospeh (Front-end/Back-end Developer)
