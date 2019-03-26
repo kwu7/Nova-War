@@ -6,7 +6,11 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Yveder/Downloads/slick"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Libraries/lib/lwjgl.jar"/>
+	<classpathentry kind="lib" path="Libraries/lib/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Nova-War/Native"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="Libraries/lib/slick.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Nova-War/Libraries/Windows"/>
