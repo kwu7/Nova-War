@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class NovaWar extends StateBasedGame {
 public static final int menu = 0;
 public static final int play = 0;
+
 	public NovaWar(String title) {
 		super(title);
 		this.addState(new Menu(menu));
@@ -22,7 +23,7 @@ public static final int play = 0;
 		AppGameContainer app;
 		try {
 			app  = new AppGameContainer(new NovaWar("Nova_War"));
-			app.setDisplayMode(600, 600, false);
+			app.setDisplayMode(400, 400, false);
 			app.setAlwaysRender(true);
 			app.start();
 		}catch(SlickException e) {
