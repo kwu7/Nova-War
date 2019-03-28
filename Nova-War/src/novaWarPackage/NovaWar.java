@@ -22,7 +22,7 @@ public static final int play = 0;
 		AppGameContainer app;
 		try {
 			app  = new AppGameContainer(new NovaWar("Nova_War"));
-			app.setDisplayMode(400, 400, false);
+			app.setDisplayMode(600, 600, false);
 			app.setAlwaysRender(true);
 			app.start();
 		}catch(SlickException e) {
