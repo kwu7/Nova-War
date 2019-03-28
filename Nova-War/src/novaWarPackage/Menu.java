@@ -11,7 +11,9 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
 	Image play;
 	Image exit;
-	public Menu(int state) {}
+	public Menu(int state) {
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
