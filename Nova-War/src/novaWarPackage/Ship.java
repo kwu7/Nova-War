@@ -27,7 +27,7 @@ public class Ship {
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
-	
+	//creates a shot
 	public void shoot() {
 		new Shot(Mouse.getX(), Mouse.getY(), this.speed, this.damage);
 	}
