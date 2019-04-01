@@ -30,9 +30,9 @@ public class Shot {
 	}
 
 	public void update(int t) {
-		if (pos.y > 0) {
+		if (pos.y > 20) {
 			Vector2f actSpeed = speed.copy();
-			actSpeed.scale(t / 1000f);
+			actSpeed.scale(t / 250f);
 			pos.y -= actSpeed.y;
 			pos.x = Mouse.getX();
 			alive = true;
@@ -41,7 +41,7 @@ public class Shot {
 		else {
 			
 			alive = false;
-			pos.y = Mouse.getY() - 5;
+			pos.y = Mouse.getY();
 			pos.x = Mouse.getX();
 		}
 
@@ -50,7 +50,7 @@ public class Shot {
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		if(alive) {
 			g.setColor(Color.pink);
-		g.fillOval(pos.getX(), pos.getY(), 50, 50);
+		g.fillOval(pos.getX(), pos.getY(), 10, 10);
 		}
 		
 	}

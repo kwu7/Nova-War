@@ -11,8 +11,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
-	int shipY = 50;
-	int shipX = 50;
+	public int shipY = 400;
+	public int shipX = 200;
 
 	Ship tank;
 	Image tankI;
@@ -34,7 +34,7 @@ public class Play extends BasicGameState {
 		tankI = new Image("/IMG/ship.png");
 		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
 		tank = new Ship(20, 5, "tank", 50, tankI, shot);
-		pewpew = new Shot(new Vector2f(shipX, shipY), new Vector2f(0, 100), 50);
+		pewpew = new Shot(new Vector2f(Mouse.getX()+5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
 	}
 
 	@Override
@@ -42,8 +42,7 @@ public class Play extends BasicGameState {
 		// TODO Auto-generated method stub
 		if (Mouse.isButtonDown(1)) {
 			pewpew.render(gc, g);
-		}
-		else if(!pewpew.getAlive()) {
+		} else if (!pewpew.getAlive()) {
 			g.clear();
 		}
 
@@ -56,10 +55,12 @@ public class Play extends BasicGameState {
 		// TODO Auto-generated method stub
 		shipY = 400 - Mouse.getY();
 		shipX = Mouse.getX();
-		if (Mouse.getEventButton() == 1) {
+		if (Mouse.isButtonDown(1)) {
+
 			pewpew.update(t);
+
 		}
-		
+
 	}
 
 	@Override
