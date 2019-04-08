@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import java.util.ArrayList;
+
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
@@ -56,7 +58,7 @@ public class Play extends BasicGameState {
 		shipY = 400 - Mouse.getY();
 		shipX = Mouse.getX();
 		if (Mouse.isButtonDown(1)) {
-
+			System.out.print(Mouse.getY());
 			pewpew.update(t);
 
 		}
@@ -67,6 +69,33 @@ public class Play extends BasicGameState {
 	public int getID() {
 		// TODO Auto-generated method stub
 		return 1;
+	}
+	
+	public void checkHits(Shot s, Ship ship) {
+		double shipX = 0;
+		double shipY = 0;
+		int shipW = 0;
+		int shipL = 0;
+		
+		double diffx;
+		double diffy;
+		
+		double shotX = 0;
+		double shotY = 0;
+		double shotW = 10;//these 2 numbers are defined when creating the shot
+		double shotL = 10;
+			shipX = ship.getXPos(); 
+			shipY = ship.getYPos();
+			shipW = ship.getImage().getWidth();
+			shipL = ship.getImage().getHeight();
+			shotX = s.getX();
+			shotY = s.getY();
+				
+			diffx = .5*shotW + .5*shipW;
+			diffy = .5*shotL + .5*shipL;
+				if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx) && (shotY - shipY >= -(diffy) && shotY - shipY <= diffy) ){
+					ship.minusHp(1);
+				}
 	}
 
 }

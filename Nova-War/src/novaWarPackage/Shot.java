@@ -18,8 +18,8 @@ public class Shot {
 	private boolean alive = true;
 
 	int damage;
-	final static int width = 25;
-	final static int height = 75;
+	final static int width = 10;
+	final static int height = 10;
 
 	// called from ship
 	public Shot(Vector2f pos, Vector2f speed, int damage) {
@@ -57,7 +57,14 @@ public class Shot {
 	public boolean getAlive() {
 		return alive;
 	}
-
+	
+	public double getX() {
+		return this.pos.x;
+	}
+	
+	public double getY() {
+		return this.pos.y;
+	}
 	// removes shot from screen
 	
 

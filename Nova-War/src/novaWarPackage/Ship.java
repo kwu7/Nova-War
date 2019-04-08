@@ -4,21 +4,19 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
-public class Ship {
+public class Ship extends Entity{
 	
 	private int hp;
-	private int speed;
 	private int damage;
-	private String name;
+	private int speed;
 	protected Image img;
 	protected Image shotI;
 	protected Shot project;
 	
 	public Ship(int hp, int speed, String name, int damage, Image img, Image shotI) {
 		this.hp = hp;
-		this.speed = speed;
-		this.name = name;
 		this.damage = damage;
+		this.speed = speed;
 		this.img= img;
 		this.shotI = shotI;
 		
@@ -37,6 +35,16 @@ public class Ship {
 	
 	public void minusHp(int minus) {
 		this.hp -= minus;
+	}
+	public Image getImage() {
+		return this.img;
+	}
+	protected double getXPos() {
+		return xPos;
+	}
+
+	protected double getYPos() {
+		return yPos;
 	}
 	//creates a shot
 	
