@@ -3,11 +3,13 @@
 
 package novaWarPackage;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer; 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -26,10 +28,10 @@ import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
 
-	public int shipY = 200;
-	public int shipX = 200;
-	public int p2X = 100;
-	public int p2Y = 100;
+	public static int shipY = 200;
+	public static int shipX = 200;
+	public static int p2X = 100;
+	public static int p2Y = 100;
 	private int time = 0;
 	public static int score = 0;
 	public static Ship p1, p2;
@@ -38,14 +40,14 @@ public class Play extends BasicGameState {
 	Shot pewpew;
 	public Rectangle p1health;
 	public Rectangle p2health;
-
+	boolean alive;
 
 	public Play(int play) {
 		
 	}
 
 	public static void main(String[] args) {
-=======
+
 
 
 	}
@@ -54,14 +56,14 @@ public class Play extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 
 
-		alive = true;
+		 alive = true;
 
 		p1health = new Rectangle(0, 0, 100, 10);
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
-		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
-		p1 = new Ship(20, 50, player1, shot, 150, 150, 0 ,0, false);
-		p2 = new Ship(20, 50, player2, shot, 150, 150, 0 ,0, false);
+		p1 = new Ship(20,50, player1,"p1");
+		p2 = new Ship(20, 50, player2, "p2");
+		
     p1.init();
     p2.init();
 		
@@ -74,7 +76,7 @@ public class Play extends BasicGameState {
 		p1.getImg().draw(shipX, shipY, .2f);
 		p2.getImg().draw(p2X, p2Y, .2f);
 		p1.project.render(gc, g);
-     p2.project.render(gc, g);
+		p2.project.render(gc, g);
 		g.fillRect(0, 0, 100, 10);
 		g.setColor(Color.green);
 
@@ -84,8 +86,10 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void update(GameContainer controller, StateBasedGame arg1, int t) throws SlickException {
+		p1.update(t);
+		p2.update(t);
 		p1.project.update(t);
-    p2.proect.update(t);
+		p2.project.update(t);
 		if(controller.getInput().isKeyDown(Input.KEY_A)) {
 			p2X -= 1;
  		}
@@ -115,6 +119,7 @@ public class Play extends BasicGameState {
 		
 		
 		
+		
 
 		}
 		
@@ -123,7 +128,6 @@ public class Play extends BasicGameState {
 		
 
 
-	}
 
 	@Override
 	public int getID() {
@@ -145,10 +149,12 @@ public class Play extends BasicGameState {
 		double shotY = 0;
 		double shotW = 10;//these 2 numbers are defined when creating the shot
 		double shotL = 10;
+			if(ship.name.equals("p1")) {
 			shipX = ship.getXPos(); 
 			shipY = ship.getYPos();
-			shipW = ship.getImage().getWidth();
-			shipL = ship.getImage().getHeight();
+			}
+			shipW = ship.getImg().getWidth();
+			shipL = ship.getImg().getHeight();
 			shotX = s.getX();
 			shotY = s.getY();
 				

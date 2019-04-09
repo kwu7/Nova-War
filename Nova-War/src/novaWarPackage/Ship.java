@@ -20,18 +20,18 @@ public class Ship extends Entity  {
 	private int hp;
 	private int damage;
 	protected Image img;
-	protected Image shotI;
 	protected Shot project;
-	boolean isBadGuy;
+	protected String name;
 	boolean alive;
 	
-	public Ship(int hp, int damage, Image img, Image shotI, double xPos, double yPos, double dY, double dX, boolean isBadGuy) {
-		super(xPos, yPos, dY, dX);
-		this.isBadGuy = isBadGuy;
+	public Ship(int hp, int damage, Image img, String name) {
+		
+		
+		this.name = name;
 		this.hp = hp;
 		this.damage = damage;
 		this.img = img;
-		this.shotI = shotI;
+		
 		this.alive = true;
 		
 		
@@ -50,6 +50,8 @@ public class Ship extends Entity  {
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
+	
+	
 
 
 	
@@ -57,16 +59,22 @@ public class Ship extends Entity  {
 
 	//creates a shot
 	public void init() throws SlickException  {
-		project = new Shot(new Vector2f(Play.shipX, Play.shipY), new Vector2f(0, 100), 50);
+		
+		if(this.name.equals("p1")) {
+		project = new Shot(new Vector2f(Play.shipX, Play.shipY), new Vector2f(0,60), 50, this.name);
+	}else {
+		project = new Shot(new Vector2f(Play.p2X, Play.p2Y), new Vector2f(0,60), 50, this.name);
 	}
+	
+}
 	
 	
 
-	public void render(GameContainer gc, Graphics g) throws SlickException {
-		//g.drawImage(this.img, (float)getXPos(), (float)getYPos());
-		g.setColor(Color.pink);
-		g.fillOval((float)getXPos(), (float)getYPos(), 10, 10);
+	
+	public void update(int t) {
+		
 	}
+	
 	//creates a shot
 
 	

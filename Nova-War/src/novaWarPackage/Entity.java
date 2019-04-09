@@ -8,6 +8,16 @@ public abstract class Entity {
 	protected double dX;
 	
 	
+	public Entity(double xPos, double yPos) {
+		// TODO Auto-generated constructor stub
+		this.xPos = xPos;
+		this.yPos = yPos;
+	}
+
+	public Entity() {
+		// TODO Auto-generated constructor stub
+	}
+
 	protected void move() {
 		xPos += dX;
 		yPos += dY;
