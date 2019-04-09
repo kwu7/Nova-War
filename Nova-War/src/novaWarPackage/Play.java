@@ -26,12 +26,6 @@ import javax.swing.Timer;
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
-	public static int p1X = 200;
-	public static int p1Y = 200;
-	public static int p2X = 100;
-	public static int p2Y = 100;
-	private int time = 0;
-	public static int score = 0;
 	public static Ship p1, p2;
 	Image player1, player2;
 	Image shot;
@@ -49,21 +43,20 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		p1health = new Rectangle(0, 0, 100, 10);
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
 		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
-		p1 = new Ship(20, 50, player1, shot, 40, 40, 0, 0, false);
-		p2 = new Ship(20, 50, player2, shot, 360, 360, 0, 0, false);
+		p1 = new Ship(20, 50, player1, shot, 320, 320);
+		p2 = new Ship(20, 50, player2, shot, 40, 40);
 		pewpew = new Shot(new Vector2f(Mouse.getX() + 5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
-    p1.init();
-    p2.init();
+		p1.init(true);
+		p2.init(false);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
-		p1.render(gc, arg1, g, true);
-		p2.render(gc, arg1, g, false);
+		p1.render(gc, arg1, g);
+		p2.render(gc, arg1, g);
 
 		g.fillRect(0, 0, p1.getHp() * 10, 10);
 		g.setColor(Color.green);
@@ -77,7 +70,6 @@ public class Play extends BasicGameState {
 		p1.update(controller, arg1, t, true);
 		p2.update(controller, arg1, t, false);
 
-
 		if (Mouse.isButtonDown(1)) {
 			pewpew.update(t);
 		}
@@ -87,32 +79,33 @@ public class Play extends BasicGameState {
 	public int getID() {
 		return 1;
 	}
-	
+
 	public void checkHits(Shot s, Ship ship) {
 		double shipX = 0;
 		double shipY = 0;
 		int shipW = 0;
 		int shipL = 0;
-		
+
 		double diffx;
 		double diffy;
-		
+
 		double shotX = 0;
 		double shotY = 0;
-		double shotW = 10;//these 2 numbers are defined when creating the shot
+		double shotW = 10;// these 2 numbers are defined when creating the shot
 		double shotL = 10;
-			shipX = ship.getXPos(); 
-			shipY = ship.getYPos();
-			shipW = ship.getImage().getWidth();
-			shipL = ship.getImage().getHeight();
-			shotX = s.getX();
-			shotY = s.getY();
-				
-			diffx = .5*shotW + .5*shipW;
-			diffy = .5*shotL + .5*shipL;
-				if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx) && (shotY - shipY >= -(diffy) && shotY - shipY <= diffy) ){
-					ship.minusHp(1);
-				}
+		shipX = ship.getXPos();
+		shipY = ship.getYPos();
+		shipW = ship.getImg().getWidth();
+		shipL = ship.getImg().getHeight();
+		shotX = s.getX();
+		shotY = s.getY();
+
+		diffx = .5 * shotW + .5 * shipW;
+		diffy = .5 * shotL + .5 * shipL;
+		if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx)
+				&& (shotY - shipY >= -(diffy) && shotY - shipY <= diffy)) {
+			ship.minusHp(1);
+		}
 	}
 
 }
