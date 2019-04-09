@@ -1,4 +1,3 @@
-
 package novaWarPackage;
 
 public abstract class Entity {	
@@ -7,7 +6,13 @@ public abstract class Entity {
 	protected double dY;
 	protected double dX;
 	
-	
+	public Entity (double xPos, double yPos, double dY, double dX) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.dY = dY;
+		this.dX = dX;
+		
+	}
 	protected void move() {
 		xPos += dX;
 		yPos += dY;
@@ -30,4 +35,3 @@ public abstract class Entity {
 		return dY;
 	}
 }
-

@@ -30,38 +30,27 @@ public class Shot {
 	}
 
 	public void update(int t) {
-		if (pos.y < 399 && pos.y > 0) {
+		if (pos.y > 20) {
 			Vector2f actSpeed = speed.copy();
-			actSpeed.scale(t / 300f);
+			actSpeed.scale(t / 250f);
 			pos.y -= actSpeed.y;
+			pos.x = Mouse.getX();
 			alive = true;
-			++life;
 			
 		}
 		else {
 			
 			alive = false;
-	
-			pos.y = Play.shipY;
-			pos.x = Play.shipX;
-			life = 0;
+			pos.y = Mouse.getY();
+			pos.x = Mouse.getX();
 		}
 
 	}
 
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		if(alive) {
-		g.setColor(Color.pink);
-		g.fillOval(pos.x, pos.y, 10, 10);
-		g.drawString(String.format("Shot Pos: %f", pos.y), 100, 200);
-		g.drawString(String.format("Mouse Pos: %d,%b ", Mouse.getY(), alive), 100, 300);
-		
-		
-		
-		}else {
-			g.drawString(String.format("Alive: %b",alive), 200, 300);
-			g.destroy();
-			
+			g.setColor(Color.pink);
+		g.fillOval(pos.getX(), pos.getY(), 10, 10);
 		}
 		
 	}

@@ -1,19 +1,19 @@
+
+
+
 package novaWarPackage;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;  
+import org.newdawn.slick.GameContainer; 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.ShapeFill;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import javafx.animation.Timeline;
+
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
@@ -45,11 +45,14 @@ public class Play extends BasicGameState {
 	}
 
 	public static void main(String[] args) {
+=======
+
 
 	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
+
 
 		alive = true;
 
@@ -67,14 +70,6 @@ public class Play extends BasicGameState {
 	}
 
 	@Override
-
-	
-
-		
-	
-			
-			
-
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
 		p1.getImg().draw(shipX, shipY, .2f);
 		p2.getImg().draw(p2X, p2Y, .2f);
@@ -126,11 +121,43 @@ public class Play extends BasicGameState {
 		
 
 		
+
+
 	}
 
 	@Override
 	public int getID() {
+
 		return 1;
 	}
+
+	
+	public void checkHits(Shot s, Ship ship) {
+		double shipX = 0;
+		double shipY = 0;
+		int shipW = 0;
+		int shipL = 0;
+		
+		double diffx;
+		double diffy;
+		
+		double shotX = 0;
+		double shotY = 0;
+		double shotW = 10;//these 2 numbers are defined when creating the shot
+		double shotL = 10;
+			shipX = ship.getXPos(); 
+			shipY = ship.getYPos();
+			shipW = ship.getImage().getWidth();
+			shipL = ship.getImage().getHeight();
+			shotX = s.getX();
+			shotY = s.getY();
+				
+			diffx = .5*shotW + .5*shipW;
+			diffy = .5*shotL + .5*shipL;
+				if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx) && (shotY - shipY >= -(diffy) && shotY - shipY <= diffy) ){
+					ship.minusHp(1);
+				}
+	}
+
 
 }

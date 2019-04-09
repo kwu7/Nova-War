@@ -1,3 +1,4 @@
+
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
@@ -10,7 +11,9 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 
+
 public class Ship extends Entity  {
+
 
 
 	
@@ -47,7 +50,7 @@ public class Ship extends Entity  {
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
-	
+
 
 	
 
@@ -58,6 +61,14 @@ public class Ship extends Entity  {
 	}
 	
 	
+
+	public void render(GameContainer gc, Graphics g) throws SlickException {
+		//g.drawImage(this.img, (float)getXPos(), (float)getYPos());
+		g.setColor(Color.pink);
+		g.fillOval((float)getXPos(), (float)getYPos(), 10, 10);
+	}
+	//creates a shot
+
 	
 	
 	
