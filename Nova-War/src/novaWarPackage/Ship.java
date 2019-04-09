@@ -1,8 +1,13 @@
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.state.StateBasedGame;
 
 public class Ship extends Entity{
 	
@@ -12,6 +17,7 @@ public class Ship extends Entity{
 	protected Image shotI;
 	protected Shot project;
 	boolean isBadGuy;
+	boolean alive;
 	
 	public Ship(int hp, int damage, Image img, Image shotI, double xPos, double yPos, double dY, double dX, boolean isBadGuy) {
 		super(xPos, yPos, dY, dX);
@@ -20,6 +26,7 @@ public class Ship extends Entity{
 		this.damage = damage;
 		this.img = img;
 		this.shotI = shotI;
+		this.alive = true;
 		
 		
 	}
@@ -36,6 +43,12 @@ public class Ship extends Entity{
 	
 	public void minusHp(int minus) {
 		this.hp -= minus;
+	}
+	
+	public void render(GameContainer gc, Graphics g) throws SlickException {
+		//g.drawImage(this.img, (float)getXPos(), (float)getYPos());
+		g.setColor(Color.pink);
+		g.fillOval((float)getXPos(), (float)getYPos(), 10, 10);
 	}
 	//creates a shot
 	

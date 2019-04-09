@@ -23,6 +23,9 @@ public class NovaWar extends StateBasedGame {
 		AppGameContainer app;
 		try {
 			app = new AppGameContainer(new NovaWar("Nova_War"));
+			app.setShowFPS(false);
+			//not sure what this does lol
+			app.setVSync(true);
 			app.setDisplayMode(400, 400, false);
 			app.setAlwaysRender(true);
 			app.start();
