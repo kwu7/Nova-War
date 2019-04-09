@@ -10,13 +10,11 @@ import org.newdawn.slick.state.StateBasedGame;
 public class NovaWar extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
-	public static final int SCOREBOARD = 2;
 
 	public NovaWar(String title) {
 		super(title);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-		this.addState(new Scoreboard(SCOREBOARD));
 	}
 
 	public static void main(String[] args) throws SlickException {
@@ -38,7 +36,6 @@ public class NovaWar extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gC) throws SlickException {
-		// TODO Auto-generated method stub
 		this.getState(menu).init(gC, this);
 		this.enterState(menu);
 	}

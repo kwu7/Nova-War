@@ -2,42 +2,29 @@
 package novaWarPackage;
 
 public abstract class Entity {	
-	protected double xPos;
-	protected double yPos;
-	protected double dY;
-	protected double dX;
-	
-	
-	public Entity(double xPos, double yPos) {
-		// TODO Auto-generated constructor stub
+	protected float xPos;
+	protected float yPos;
+
+
+	public Entity(float xPos, float yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 	}
-
-	public Entity() {
-		// TODO Auto-generated constructor stub
-	}
-
-	protected void move() {
-		xPos += dX;
-		yPos += dY;
-		
-	}
 	
-	protected double getXPos() {
+	protected float getXPos() {
 		return xPos;
 	}
 
-	protected double getYPos() {
+	protected float getYPos() {
 		return yPos;
 	}
+
 	
-	protected double getDX() {
-		return dX;
+	protected void setXPos(float change) {
+		xPos =+ change;
 	}
-	
-	protected double getDY() {
-		return dY;
+	protected void setYPos(float change) {
+		xPos =+ change;
 	}
 }
 

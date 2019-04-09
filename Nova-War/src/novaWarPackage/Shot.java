@@ -45,9 +45,9 @@ public class Shot {
 		else {
 			
 			alive = false;
-	
-			pos.y = Play.shipY;
-			pos.x = Play.shipX;
+//this doesnt work lol
+//			pos.y = Play.shipY;
+//			pos.x = Play.shipX;
 			life = 0;
 		}
 		}else {
