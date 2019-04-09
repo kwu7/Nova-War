@@ -6,17 +6,13 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
+public class Ship extends Entity {
 
-
-public class Ship extends Entity  {
-
-
-
-	
 	private int hp;
 	private int damage;
 	protected Image img;
@@ -24,8 +20,9 @@ public class Ship extends Entity  {
 	protected Shot project;
 	boolean isBadGuy;
 	boolean alive;
-	
-	public Ship(int hp, int damage, Image img, Image shotI, double xPos, double yPos, double dY, double dX, boolean isBadGuy) {
+
+	public Ship(int hp, int damage, Image img, Image shotI, double xPos, double yPos, double dY, double dX,
+			boolean isBadGuy) {
 		super(xPos, yPos, dY, dX);
 		this.isBadGuy = isBadGuy;
 		this.hp = hp;
@@ -33,27 +30,73 @@ public class Ship extends Entity  {
 		this.img = img;
 		this.shotI = shotI;
 		this.alive = true;
-		
-		
+
 	}
+
 	public Image getImg() {
 		return this.img;
 	}
+
 	public int getHp() {
 		return this.hp;
 	}
-	
+
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-	
+
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
 
+	public void render(GameContainer gc, StateBasedGame arg1, Graphics g, boolean player1) throws SlickException {
+		if (player1)
+			getImg().draw(Play.p1X, Play.p1Y, .2f);
+		else
+			getImg().draw(Play.p2X, Play.p2Y, .2f);
+	}
 
-	
+	public void update(GameContainer controller, StateBasedGame arg1, int t, boolean player1) throws SlickException {
+		if(!player1) {
+			if (controller.getInput().isKeyDown(Input.KEY_A)) {
+				if (!(Play.p2X <= 0))
+					Play.p2X -= 6;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_D)) {
+				if (!((Play.p2X + 33) >= 400))
+					Play.p2X += 6;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_W)) {
+				if (!(Play.p2Y <= 0))
+					Play.p2Y -= 6;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_S)) {
+				if (!(Play.p2Y + 60 >= 400))
+					Play.p2Y += 6;
+			}
+		}
+		else
+			if (controller.getInput().isKeyDown(Input.KEY_DOWN)) {
+				if (!(Play.p1Y + 60 >= 400))
+					Play.p1Y += 6;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_UP)) {
+				if (!(Play.p1Y <= 0))
+					Play.p1Y -= 3;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_LEFT)) {
+				if (!(Play.p1X <= 0))
+					Play.p1X -= 3;
+			}
+			if (controller.getInput().isKeyDown(Input.KEY_RIGHT)) {
+				if (!(Play.p1X + 33 >= 400))
+					Play.p1X += 3;
+			}
+				
+				
+	}
 
+}
 
 	//creates a shot
 	public void init() throws SlickException  {
@@ -62,14 +105,4 @@ public class Ship extends Entity  {
 	
 	
 
-	public void render(GameContainer gc, Graphics g) throws SlickException {
-		//g.drawImage(this.img, (float)getXPos(), (float)getYPos());
-		g.setColor(Color.pink);
-		g.fillOval((float)getXPos(), (float)getYPos(), 10, 10);
-	}
-	//creates a shot
-
 	
-	
-	
-}
