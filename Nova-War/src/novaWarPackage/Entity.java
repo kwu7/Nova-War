@@ -2,38 +2,29 @@
 package novaWarPackage;
 
 public abstract class Entity {	
-	protected double xPos;
-	protected double yPos;
-	protected double dY;
-	protected double dX;
+	protected float xPos;
+	protected float yPos;
+
 	
-	
-	protected void move() {
-		xPos += dX;
-		yPos += dY;
-		
+	public Entity(float xPos, float yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+
 	}
 	
-	protected double getXPos() {
+	protected float getXPos() {
 		return xPos;
 	}
 
-	protected double getYPos() {
+	protected float getYPos() {
 		return yPos;
 	}
+
 	
-	protected double getDX() {
-		return dX;
-	}
-	
-	protected double getDY() {
-		return dY;
-	}
-	
-	protected void setXPos(int change) {
+	protected void setXPos(float change) {
 		xPos =+ change;
 	}
-	protected void setYPos(int change) {
+	protected void setYPos(float change) {
 		xPos =+ change;
 	}
 }
