@@ -1,3 +1,4 @@
+
 package novaWarPackage;
 
 import org.newdawn.slick.Color;
@@ -55,7 +56,8 @@ public class Play extends BasicGameState {
 		p1 = new Ship(20, 50, player1, shot, 40, 40, 0, 0, false);
 		p2 = new Ship(20, 50, player2, shot, 360, 360, 0, 0, false);
 		pewpew = new Shot(new Vector2f(Mouse.getX() + 5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
-
+    p1.init();
+    p2.init();
 	}
 
 	@Override
@@ -77,16 +79,40 @@ public class Play extends BasicGameState {
 
 
 		if (Mouse.isButtonDown(1)) {
-
 			pewpew.update(t);
-
 		}
-
 	}
 
 	@Override
 	public int getID() {
 		return 1;
+	}
+	
+	public void checkHits(Shot s, Ship ship) {
+		double shipX = 0;
+		double shipY = 0;
+		int shipW = 0;
+		int shipL = 0;
+		
+		double diffx;
+		double diffy;
+		
+		double shotX = 0;
+		double shotY = 0;
+		double shotW = 10;//these 2 numbers are defined when creating the shot
+		double shotL = 10;
+			shipX = ship.getXPos(); 
+			shipY = ship.getYPos();
+			shipW = ship.getImage().getWidth();
+			shipL = ship.getImage().getHeight();
+			shotX = s.getX();
+			shotY = s.getY();
+				
+			diffx = .5*shotW + .5*shipW;
+			diffy = .5*shotL + .5*shipL;
+				if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx) && (shotY - shipY >= -(diffy) && shotY - shipY <= diffy) ){
+					ship.minusHp(1);
+				}
 	}
 
 }

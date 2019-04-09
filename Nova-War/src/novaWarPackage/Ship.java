@@ -1,3 +1,4 @@
+
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
@@ -96,3 +97,12 @@ public class Ship extends Entity {
 	}
 
 }
+
+	//creates a shot
+	public void init() throws SlickException  {
+		project = new Shot(new Vector2f(Play.shipX, Play.shipY), new Vector2f(0, 100), 50);
+	}
+	
+	
+
+	
