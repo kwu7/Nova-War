@@ -1,6 +1,6 @@
 package novaWarPackage;
 
-import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.GameContainer; 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -8,13 +8,22 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import javafx.animation.Timeline;
+
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
 	public int shipY = 400;
 	public int shipX = 200;
+	private Timer timer;
+	private TimerTask task;
+	Random rndm = new Random();
 
 	Ship tank;
 	Image tankI;
@@ -33,10 +42,22 @@ public class Play extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		// TODO Auto-generated method stub
-		tankI = new Image("/IMG/ship.png");
+		tankI = new Image("IMG/ship.png");
 		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
-		tank = new Ship(20, 5, "tank", 50, tankI, shot);
+		tank = new Ship(20, 50, tankI, shot, 150, 150, 0 ,0, false);
 		pewpew = new Shot(new Vector2f(Mouse.getX()+5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
+		timer = new Timer();
+		ArrayList<Ship> enemies = new ArrayList<>();
+		task = new TimerTask() {
+
+			@Override
+			public void run() {
+//				enemies.add(new Ship(100, "tom", 50, tankI, shot, 300, 0 , 0 , 0, true));
+//				enemies.get(0).getImg().draw(shipX, shipY, .2f);
+				System.out.println("test");
+			}
+		};
+		//timer.scheduleAtFixedRate(task, 1000, 5000);
 	}
 
 	@Override
@@ -47,8 +68,20 @@ public class Play extends BasicGameState {
 		} else if (!pewpew.getAlive()) {
 			g.clear();
 		}
+		ArrayList<Ship> enemies = new ArrayList<>();
+		task = new TimerTask() {
 
+			@Override
+			public void run() {
+//				enemies.add(new Ship(100, "tom", 50, tankI, shot, 300, 0 , 0 , 0, true));
+//				enemies.get(0).getImg().draw(shipX, shipY, .2f);
+				System.out.println("test");
+			}
+		};
 		tank.getImg().draw(shipX, shipY, .2f);
+		timer.scheduleAtFixedRate(task, 1000, 5000);
+		
+		
 
 	}
 
@@ -62,6 +95,7 @@ public class Play extends BasicGameState {
 			pewpew.update(t);
 
 		}
+		
 
 	}
 

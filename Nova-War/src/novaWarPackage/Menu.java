@@ -4,6 +4,7 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -11,6 +12,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
 	Image play;
 	Image exit;
+	Image leaderboard;
+	
 	public Menu(int state) {
 		
 	}
@@ -24,6 +27,7 @@ public class Menu extends BasicGameState {
 		// TODO Auto-generated method stub
 		play = new Image("IMG/Text-Button-Example.png");
 		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
+		leaderboard = new Image("IMG/Leaderboard-button.png");
 	}
 
 	@Override
@@ -32,8 +36,7 @@ public class Menu extends BasicGameState {
 		g.drawString("NOVA_WAR", 150, 50);
 		g.drawString("Wu Conflict",140, 80);
 		play.draw(120, 150, .2f);
-		play.getHeight();
-		
+		leaderboard.draw(120 + 20, 150, .2f);
 	}
 
 	@Override
@@ -45,6 +48,10 @@ public class Menu extends BasicGameState {
 			if(Mouse.isButtonDown(0)) {
 				sbg.enterState(1);
 			}
+		}
+		
+		if(arg0.getInput().isKeyPressed(Input.KEY_D)) {
+			sbg.enterState(2);
 		}
 		
 	}

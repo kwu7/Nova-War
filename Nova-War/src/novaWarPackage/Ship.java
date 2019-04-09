@@ -8,16 +8,20 @@ public class Ship extends Entity{
 	
 	private int hp;
 	private int damage;
-	private int speed;
+
+
 	protected Image img;
 	protected Image shotI;
 	protected Shot project;
+	boolean isBadGuy;
 	
-	public Ship(int hp, int speed, String name, int damage, Image img, Image shotI) {
+	public Ship(int hp, int damage, Image img, Image shotI, double xPos, double yPos, double dY, double dX, boolean isBadGuy) {
+		super(xPos, yPos, dY, dX);
+		this.isBadGuy = isBadGuy;
 		this.hp = hp;
 		this.damage = damage;
-		this.speed = speed;
-		this.img= img;
+		this.img = img;
+
 		this.shotI = shotI;
 		
 		
