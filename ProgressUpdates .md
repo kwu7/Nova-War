@@ -33,6 +33,12 @@
 * Game will now be a 1v1 between 2 ships
 * Updated code to match our plan.
 
+## Week 6
+* Get both ships to shoot in opposite directions
+* Limit both ships to not cross a middle line
+* health bars to indicate hp
+* Game ends when a ship reaches 0 hp and brings back to menu
+
 
 ### Any blocking issues/challenges need to be addressed?
 * Hitbox detection perfection
