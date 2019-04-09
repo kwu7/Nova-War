@@ -34,4 +34,11 @@ public abstract class Entity {
 	protected double getDY() {
 		return dY;
 	}
+	
+	protected void setXPos(int change) {
+		xPos =+ change;
+	}
+	protected void setYPos(int change) {
+		xPos =+ change;
+	}
 }

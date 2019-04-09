@@ -1,7 +1,7 @@
 package novaWarPackage;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;  
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -25,10 +25,10 @@ import javax.swing.Timer;
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
-	public int shipY = 200;
-	public int shipX = 200;
-	public int p2X = 100;
-	public int p2Y = 100;
+	public static int p1X = 200;
+	public static int p1Y = 200;
+	public static int p2X = 100;
+	public static int p2Y = 100;
 	private int time = 0;
 	public static int score = 0;
 	public static Ship p1, p2;
@@ -39,7 +39,7 @@ public class Play extends BasicGameState {
 	public Rectangle p2health;
 
 	public Play(int play) {
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -52,57 +52,30 @@ public class Play extends BasicGameState {
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
 		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
-		p1 = new Ship(20, 50, player1, shot, 150, 150, 0 ,0, false);
-		p2 = new Ship(20, 50, player2, shot, 150, 150, 0 ,0, false);
-		pewpew = new Shot(new Vector2f(Mouse.getX()+5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
-		
-		
+		p1 = new Ship(20, 50, player1, shot, 40, 40, 0, 0, false);
+		p2 = new Ship(20, 50, player2, shot, 360, 360, 0, 0, false);
+		pewpew = new Shot(new Vector2f(Mouse.getX() + 5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
+
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
-		p1.getImg().draw(shipX, shipY, .2f);
-		p2.getImg().draw(p2X, p2Y, .2f);
-		
-		g.fillRect(0, 0, 100, 10);
+		p1.render(gc, arg1, g, true);
+		p2.render(gc, arg1, g, false);
+
+		g.fillRect(0, 0, p1.getHp() * 10, 10);
 		g.setColor(Color.green);
 
-		g.fillRect(300, 390, 100, 10);
+		g.fillRect(200, 390, p2.getHp() * 10, 10);
 		g.setColor(Color.green);
 	}
 
 	@Override
 	public void update(GameContainer controller, StateBasedGame arg1, int t) throws SlickException {
-		
-		if(controller.getInput().isKeyDown(Input.KEY_A)) {
-			p2X -= 1;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_D)) {
-			p2X += 1;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_W)) {
-			p2Y -= 1;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_S)) {
-			p2Y += 1;
- 		}
-		
-		
-		if(controller.getInput().isKeyDown(Input.KEY_DOWN)) {
-			shipY += 3;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_UP)) {
-			shipY -= 3;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_LEFT)) {
-			shipX -= 1;
- 		}
-		if(controller.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			shipX += 1;
- 		}
-		
-		
-		
+		p1.update(controller, arg1, t, true);
+		p2.update(controller, arg1, t, false);
+
+
 		if (Mouse.isButtonDown(1)) {
 
 			pewpew.update(t);
