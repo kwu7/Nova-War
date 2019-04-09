@@ -10,7 +10,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Ship extends Entity{
+
+
+public class Ship extends Entity  {
+
+
+
 	
 	private int hp;
 	private int damage;
@@ -45,13 +50,25 @@ public class Ship extends Entity{
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
+
+
 	
+
+
+	//creates a shot
+	public void init() throws SlickException  {
+		project = new Shot(new Vector2f(Play.shipX, Play.shipY), new Vector2f(0, 100), 50);
+	}
+	
+	
+
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		//g.drawImage(this.img, (float)getXPos(), (float)getYPos());
 		g.setColor(Color.pink);
 		g.fillOval((float)getXPos(), (float)getYPos(), 10, 10);
 	}
 	//creates a shot
+
 	
 	
 	
