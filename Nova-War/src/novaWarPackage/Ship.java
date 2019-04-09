@@ -2,9 +2,10 @@ package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
-public class Ship {
+public class Ship extends Entity  {
 	
 	private int hp;
 	private int speed;
@@ -38,7 +39,14 @@ public class Ship {
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
+	
+	
 	//creates a shot
+	public void init() throws SlickException  {
+		project = new Shot(new Vector2f(Play.shipX, Play.shipY), new Vector2f(0, 100), 50);
+	}
+	
+	
 	
 	
 	

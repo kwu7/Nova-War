@@ -11,14 +11,15 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.lwjgl.input.Mouse;
 
 public class Play extends BasicGameState {
-	public int shipY = 400;
-	public int shipX = 200;
+	public static int shipY = 400;
+	public static int shipX = 200;
 
 	Ship tank;
 	Image tankI;
 	Image shot;
 	Shot pewpew;
-
+	boolean alive;
+	int Score;
 	public Play(int play) {
 
 	}
@@ -32,35 +33,44 @@ public class Play extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		// TODO Auto-generated method stub
 		tankI = new Image("/IMG/ship.png");
-		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
+		shot =  new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
 		tank = new Ship(20, 5, "tank", 50, tankI, shot);
-		pewpew = new Shot(new Vector2f(Mouse.getX()+5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
+		tank.init();
+		alive = true;
+		
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		if (Mouse.isButtonDown(1)) {
-			pewpew.render(gc, g);
-		} else if (!pewpew.getAlive()) {
-			g.clear();
-		}
-
+		if(alive) {
+		tank.project.render(gc, g);
+		
 		tank.getImg().draw(shipX, shipY, .2f);
+		}else {
+			g.drawString("Game Over!!!",50 , 50);
+			
+		}
+	
 
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int t) throws SlickException {
+	public void update(GameContainer arg0, StateBasedGame sbg, int t) throws SlickException {
 		// TODO Auto-generated method stub
 		shipY = 400 - Mouse.getY();
 		shipX = Mouse.getX();
-		if (Mouse.isButtonDown(1)) {
-
-			pewpew.update(t);
-
+		
+		tank.project.update(t);
+		if(Mouse.isButtonDown(1)) {
+			alive = false;
+			
+			
 		}
+		
+		
 
+		
 	}
 
 	@Override
