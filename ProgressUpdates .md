@@ -18,10 +18,33 @@
 ## Week 2 (March 16 - March 23)
 
 ### What did your team do last week?
-...
+* Design UML diagram for classes within our game
+* Create java project for for game
 
-### What will you do this week?
-...
+## Week 3
+* Created a menu
+* Play button that launches into game with a ship.
+
+## Week 4
+* Ship now shoots
+* hitbox detection method work begin.
+
+## Week 5
+* Game will now be a 1v1 between 2 ships
+* Updated code to match our plan.
+
 
 ### Any blocking issues/challenges need to be addressed?
-...
+* Hitbox detection perfection
+## Week 2 (March 24 - March 29)
+
+### What did your team do last week?
+* Create main menu
+
+### What will you do this week?
+* Create ship entity and control iit using mouse
+* add projectile shot
+
+### Any blocking issues/challenges need to be addressed?
+* None
+
