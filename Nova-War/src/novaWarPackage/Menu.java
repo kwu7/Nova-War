@@ -27,7 +27,7 @@ public class Menu extends BasicGameState {
 		// TODO Auto-generated method stub
 		play = new Image("IMG/Text-Button-Example.png");
 		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
-		leaderboard = new Image("IMG/Leaderboard-button.png");
+		
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class Menu extends BasicGameState {
 		g.drawString("NOVA_WAR", 150, 50);
 		g.drawString("Wu Conflict",140, 80);
 		play.draw(120, 150, .2f);
-		leaderboard.draw(120 + 20, 150, .2f);
+		
 	}
 
 	@Override
