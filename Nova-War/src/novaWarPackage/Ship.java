@@ -20,14 +20,11 @@ public class Ship extends Entity {
 	protected String name;
 	boolean alive;
 
-	public Ship(int hp, int damage, Image img, Image shotI, float xPos, float yPos) {
+	public Ship(int hp, int damage, Image img, float xPos, float yPos) {
 		super(xPos, yPos);
-
 		this.hp = hp;
 		this.img = img;
-		
 		this.alive = true;
-
 	}
 
 	public Image getImg() {
@@ -46,8 +43,7 @@ public class Ship extends Entity {
 		this.hp -= minus;
 	}
 	
-	
-
+  //this makes a shot
   public void init() throws SlickException  {
 		project = new Shot(new Vector2f(getXPos(), getYPos()), new Vector2f(0,60), 50, this.name);
 }
@@ -94,6 +90,4 @@ public class Ship extends Entity {
 		}
 	}
 
-
-	
 }

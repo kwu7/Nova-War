@@ -16,27 +16,9 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import javafx.animation.Timeline;
-import javafx.scene.input.KeyCode;
-
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.TimerTask;
-
-import javax.swing.Timer;
-
-import org.lwjgl.input.Mouse;
-
 public class Play extends BasicGameState {
-
-
 	public static Ship p1, p2;
 	Image player1, player2;
-	Image shot;
-	Shot pewpew;
-	public Rectangle p1health;
-	public Rectangle p2health;
-
 
 	public Play(int play) {
 
@@ -44,22 +26,18 @@ public class Play extends BasicGameState {
 
 	public static void main(String[] args) {
 
-
 	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-
-
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
-		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
-		p1 = new Ship(20, 50, player1, shot, 320, 320);
-		p2 = new Ship(20, 50, player2, shot, 40, 40);
-		pewpew = new Shot(new Vector2f(Mouse.getX() + 5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
-		p1.init(true);
-		p2.init(false);
 
+		p1 = new Ship(20, 50, player1, 320, 320);
+		p2 = new Ship(20, 50, player2, 40, 40);
+
+		p1.init();
+		p2.init();
 	}
 
 	@Override
@@ -75,7 +53,6 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void update(GameContainer controller, StateBasedGame arg1, int t) throws SlickException {
-
 		p1.update(controller, arg1, t, true);
 		p2.update(controller, arg1, t, false);
 	}

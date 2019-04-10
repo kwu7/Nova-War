@@ -10,11 +10,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class NovaWar extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
+	public static final int instructions = 2;
 
 	public NovaWar(String title) {
 		super(title);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
+		this.addState(new Instructions(instructions));
 	}
 
 	public static void main(String[] args) throws SlickException {
