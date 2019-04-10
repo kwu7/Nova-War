@@ -18,13 +18,18 @@ public class Ship extends Entity {
 	protected Image img;
 	protected Shot project;
 	protected String name;
-	boolean alive;
+	
 
-	public Ship(int hp, int damage, Image img, float xPos, float yPos) {
+	public Ship(int hp, int damage, Image img, Image shotI, float xPos, float yPos, String name) {
+
+
 		super(xPos, yPos);
 		this.hp = hp;
 		this.img = img;
-		this.alive = true;
+
+		this.name = name;
+
+		
 	}
 
 	public Image getImg() {
@@ -45,14 +50,16 @@ public class Ship extends Entity {
 	
   //this makes a shot
   public void init() throws SlickException  {
-		project = new Shot(new Vector2f(getXPos(), getYPos()), new Vector2f(0,60), 50, this.name);
+		project = new Shot(new Vector2f(this.getXPos(), this.getYPos()), new Vector2f(0,60), 50, this.name);
 }
   
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
 		getImg().draw(getXPos(), getYPos(), .2f);
+		project.render(gc, g);
 	}
 
 	public void update(GameContainer controller, StateBasedGame arg1, int t, boolean player1) throws SlickException {
+		project.update(t);
 		if (!player1) {
 			if (controller.getInput().isKeyDown(Input.KEY_A)) {
 				if (!(getXPos() <= 0))

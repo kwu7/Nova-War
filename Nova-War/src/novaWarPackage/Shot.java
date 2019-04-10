@@ -34,7 +34,7 @@ public class Shot {
 
 	public void update(int t) {
 		if(ship.equals("p1")){
-		if (pos.y < 399 && pos.y > 0 ) {
+		if ((pos.y < 399 && pos.y > 0) && Play.hit1 == false) {
 			Vector2f actSpeed = speed.copy();
 			actSpeed.scale(t / 300f);
 			pos.y -= actSpeed.y;
@@ -44,14 +44,13 @@ public class Shot {
 		}
 		else {
 			
-			alive = false;
-//this doesnt work lol
-//			pos.y = Play.shipY;
-//			pos.x = Play.shipX;
-			life = 0;
+		
+			pos.y = Play.p1.getYPos();
+			pos.x = Play.p1.getXPos();
+			
 		}
 		}else {
-			if ( pos.y < 399 && pos.y > 0 ) {
+			if ((pos.y < 399 && pos.y > 0) && Play.hit2 == false){
 				Vector2f actSpeed = speed.copy();
 				actSpeed.scale(t / 300f);
 				pos.y += actSpeed.y;
@@ -60,12 +59,10 @@ public class Shot {
 				
 			}
 			else {
-				
-				alive = false;
 		
-				pos.y = Play.p2Y + 40;
-				pos.x = Play.p2X;
-				life = 0;
+				pos.y = Play.p2.getYPos() + 20;
+				pos.x = Play.p2.getXPos();
+				
 			}
 		}
 
