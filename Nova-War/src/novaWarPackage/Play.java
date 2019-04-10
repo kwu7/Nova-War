@@ -29,7 +29,6 @@ public class Play extends BasicGameState {
 	public static Ship p1, p2;
 	Image player1, player2;
 	Image shot;
-	Shot pewpew;
 	public Rectangle p1health;
 	public Rectangle p2health;
 
@@ -45,12 +44,11 @@ public class Play extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
-		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
+		//shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
 		p1 = new Ship(20, 50, player1, shot, 320, 320);
 		p2 = new Ship(20, 50, player2, shot, 40, 40);
-		pewpew = new Shot(new Vector2f(Mouse.getX() + 5, Mouse.getY() - 400), new Vector2f(0, 100), 50);
-		p1.init(true);
-		p2.init(false);
+		p1.init();
+		p2.init();
 	}
 
 	@Override
@@ -71,7 +69,6 @@ public class Play extends BasicGameState {
 		p2.update(controller, arg1, t, false);
 
 		if (Mouse.isButtonDown(1)) {
-			pewpew.update(t);
 		}
 	}
 

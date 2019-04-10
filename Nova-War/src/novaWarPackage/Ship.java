@@ -89,7 +89,7 @@ public class Ship extends Entity {
 	}
 
 	// creates a shot
-	public void init(boolean player1) throws SlickException {
+	public void init() throws SlickException {
 //		if (player1)
 //			project = new Shot(new Vector2f(Play.p1X, Play.p1Y), new Vector2f(0, 100), 50);
 //		else
