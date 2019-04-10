@@ -47,31 +47,54 @@ public class Play extends BasicGameState {
 		p2.init();
 
 
-		p1 = new Ship(20, 50, player1, 320, 320);
-		p2 = new Ship(20, 50, player2, 40, 40);
-
-		p1.init();
-		p2.init();
+	
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
-
+		if (p1.getHp() > 1) {
 		p1.render(gc, arg1, g);
+		g.fillRect(350, 390, p1.getHp(), 10);
+		g.setColor(Color.green);
+		}
+		else {
+			g.drawString("Player 2 Wins! -- press space to continue", 10, 200);
+			
+		}
+		if (p2.getHp() > 1) {
 		p2.render(gc, arg1, g);
 		g.fillRect(0, 0, p2.getHp(), 10);
 		g.setColor(Color.green);
-		g.fillRect(350, 390, p1.getHp(), 10);
-		g.setColor(Color.green);
+		}
+		else {
+			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);
+			
+		}
+		
+		
+		
 	}
 
 	@Override
-	public void update(GameContainer controller, StateBasedGame arg1, int t) throws SlickException {
+	public void update(GameContainer controller, StateBasedGame sbg, int t) throws SlickException {
 
-		p1.update(controller, arg1, t, true);
-		p2.update(controller, arg1, t, false);
+		p1.update(controller, sbg, t, true);
+		p2.update(controller, sbg, t, false);
 		hit1 =  checkHits(p1.project, p2);
 		hit2 =  checkHits(p2.project, p1);
+		
+		if (p1.getHp() < 1 || p2.getHp() <1) {
+			if (controller.getInput().isKeyDown(Input.KEY_SPACE)) {
+				p1.setHp(50);
+				p2.setHp(50);
+				
+				p1.setXPos(320);
+				p1.setYPos(60);
+				p2.setXPos(40);
+				p2.setYPos(40);
+				sbg.enterState(0);
+			}
+		}
 		
 		
 	}
