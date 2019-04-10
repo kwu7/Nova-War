@@ -16,18 +16,15 @@ public class Ship extends Entity {
 	private int hp;
 	private int damage;
 	protected Image img;
-	protected Image shotI;
 	protected Shot project;
-	boolean isBadGuy;
+	protected String name;
 	boolean alive;
 
-	public Ship(int hp, int damage, Image img, Image shotI, float xPos, float yPos) {
+	public Ship(int hp, int damage, Image img, float xPos, float yPos) {
 		super(xPos, yPos);
 		this.hp = hp;
 		this.img = img;
-		this.shotI = shotI;
 		this.alive = true;
-
 	}
 
 	public Image getImg() {
@@ -45,7 +42,12 @@ public class Ship extends Entity {
 	public void minusHp(int minus) {
 		this.hp -= minus;
 	}
-
+	
+  //this makes a shot
+  public void init() throws SlickException  {
+		project = new Shot(new Vector2f(getXPos(), getYPos()), new Vector2f(0,60), 50, this.name);
+}
+  
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
 		getImg().draw(getXPos(), getYPos(), .2f);
 	}
@@ -88,11 +90,4 @@ public class Ship extends Entity {
 		}
 	}
 
-	// creates a shot
-	public void init() throws SlickException {
-//		if (player1)
-//			project = new Shot(new Vector2f(Play.p1X, Play.p1Y), new Vector2f(0, 100), 50);
-//		else
-//			project = new Shot(new Vector2f(Play.p2X, Play.p2Y), new Vector2f(0, 100), 50);
-	}
 }

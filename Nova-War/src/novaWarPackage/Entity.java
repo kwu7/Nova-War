@@ -5,11 +5,10 @@ public abstract class Entity {
 	protected float xPos;
 	protected float yPos;
 
-	
+
 	public Entity(float xPos, float yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
-
 	}
 	
 	protected float getXPos() {

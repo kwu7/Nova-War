@@ -20,17 +20,21 @@ public class Shot {
 	int damage;
 	final static int width = 10;
 	final static int height = 10;
-
+	private final String ship;
 	// called from ship
-	public Shot(Vector2f pos, Vector2f speed, int damage) {
+	public Shot(Vector2f pos, Vector2f speed, int damage, String ship) {
 		this.pos = pos;
 		this.speed = speed;
 		this.damage = damage;
+		this.ship = ship;
 
 	}
 
+	
+
 	public void update(int t) {
-		if (pos.y < 399 && pos.y > 0) {
+		if(ship.equals("p1")){
+		if (pos.y < 399 && pos.y > 0 ) {
 			Vector2f actSpeed = speed.copy();
 			actSpeed.scale(t / 300f);
 			pos.y -= actSpeed.y;
@@ -45,6 +49,24 @@ public class Shot {
 //			pos.y = Play.shipY;
 //			pos.x = Play.shipX;
 			life = 0;
+		}
+		}else {
+			if ( pos.y < 399 && pos.y > 0 ) {
+				Vector2f actSpeed = speed.copy();
+				actSpeed.scale(t / 300f);
+				pos.y += actSpeed.y;
+				alive = true;
+				++life;
+				
+			}
+			else {
+				
+				alive = false;
+		
+				pos.y = Play.p2Y + 40;
+				pos.x = Play.p2X;
+				life = 0;
+			}
 		}
 
 	}
