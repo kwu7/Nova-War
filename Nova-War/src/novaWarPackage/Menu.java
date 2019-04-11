@@ -26,6 +26,7 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		play = new Image("IMG/Text-Button-Example.png");
 		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
+
 	}
 
 	@Override
@@ -34,6 +35,7 @@ public class Menu extends BasicGameState {
 		g.drawString("Wu Conflict",140, 80);
 		g.drawString("Press 'I' for instructions", 0, 385);
 		play.draw(120, 150, .2f);
+
 	}
 
 	@Override

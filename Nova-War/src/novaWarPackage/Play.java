@@ -19,6 +19,9 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Play extends BasicGameState {
 	public static Ship p1, p2;
 	Image player1, player2;
+	Image shot;
+	public static boolean hit1;
+	public static boolean hit2;
 
 	public Play(int play) {
 
@@ -33,28 +36,53 @@ public class Play extends BasicGameState {
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
 
-		p1 = new Ship(20, 50, player1, 320, 320);
-		p2 = new Ship(20, 50, player2, 40, 40);
-
+		p1 = new Ship(50, 50, player1, shot, 320, 320, "p1");
+		p2 = new Ship(50, 50, player2, shot, 40, 40, "p2");
+		
 		p1.init();
 		p2.init();
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
-
+		if (p1.getHp() > 1) {
 		p1.render(gc, arg1, g);
+		g.fillRect(350, 390, p1.getHp(), 10);
+		g.setColor(Color.green);
+		}
+		else {
+			g.drawString("Player 2 Wins! -- press space to continue", 10, 200);
+			
+		}
+		if (p2.getHp() > 1) {
 		p2.render(gc, arg1, g);
-		g.fillRect(0, 0, p1.getHp() * 10, 10);
+		g.fillRect(0, 0, p2.getHp(), 10);
 		g.setColor(Color.green);
-		g.fillRect(200, 390, p2.getHp() * 10, 10);
-		g.setColor(Color.green);
+		}
+		else {
+			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);	
+		}
 	}
 
 	@Override
-	public void update(GameContainer controller, StateBasedGame arg1, int t) throws SlickException {
-		p1.update(controller, arg1, t, true);
-		p2.update(controller, arg1, t, false);
+	public void update(GameContainer controller, StateBasedGame sbg, int t) throws SlickException {
+		p1.update(controller, sbg, t, true);
+		p2.update(controller, sbg, t, false);
+		hit1 =  checkHits(p1.project, p2);
+		hit2 =  checkHits(p2.project, p1);
+		
+		if (p1.getHp() < 1 || p2.getHp() <1) {
+			if (controller.getInput().isKeyDown(Input.KEY_SPACE)) {
+				p1.setHp(50);
+				p2.setHp(50);
+				
+				p1.setXPos(320);
+				p1.setYPos(60);
+				p2.setXPos(40);
+				p2.setYPos(40);
+				sbg.enterState(0);
+			}
+		}
 	}
 
 
@@ -63,7 +91,7 @@ public class Play extends BasicGameState {
 		return 1;
 	}
 
-	public void checkHits(Shot s, Ship ship) {
+	public boolean checkHits(Shot s, Ship ship) {
 		double shipX = 0;
 		double shipY = 0;
 		int shipW = 0;
@@ -76,21 +104,24 @@ public class Play extends BasicGameState {
 		double shotY = 0;
 		double shotW = 10;// these 2 numbers are defined when creating the shot
 		double shotL = 10;
-
-		shipX = ship.getXPos();
-		shipY = ship.getYPos();
+		boolean hit = false;
+		
 		shipW = ship.getImg().getWidth();
 		shipL = ship.getImg().getHeight();
+		shipX = ship.getXPos() + (.1* shipW) / 2;
+		shipY = ship.getYPos()+ (.1 * shipL) / 2;
 		shotX = s.getX();
 		shotY = s.getY();
 
-		diffx = .5 * shotW + .5 * shipW;
-		diffy = .5 * shotL + .5 * shipL;
+		diffx = .1 * shotW + .1 * shipW;
+		diffy = .1 * shotL + .1 * shipL;
 		if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx)
 				&& (shotY - shipY >= -(diffy) && shotY - shipY <= diffy)) {
-			ship.minusHp(1);
+			ship.minusHp(4);
+			hit = true;
 		}
-
+    
+		return hit;
 	}
-
 }
+
