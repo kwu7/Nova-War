@@ -21,14 +21,15 @@ public class Menu extends BasicGameState {
 	public static void main(String[] args) {
 		
 	}
-
+	
+	//creates the play and exit image
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		play = new Image("IMG/Text-Button-Example.png");
 		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
 
 	}
-
+	//renders all the different things in the home screen
 	@Override
 	public void render(GameContainer arg0, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("NOVA_WAR", 150, 50);
@@ -37,7 +38,7 @@ public class Menu extends BasicGameState {
 		play.draw(120, 150, .2f);
 
 	}
-
+	//adjusts the position of the mouse and checks if it clicks the play image
 	@Override
 	public void update(GameContainer arg0, StateBasedGame sbg, int arg2) throws SlickException {
 		int posX = Mouse.getX();

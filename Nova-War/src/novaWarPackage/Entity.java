@@ -5,7 +5,7 @@ public abstract class Entity {
 	protected float xPos;
 	protected float yPos;
 
-
+	//creates a new entity as an x and y position
 	public Entity(float xPos, float yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
