@@ -29,7 +29,7 @@ public class Instructions extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 
 	}
-
+	//renders the instructions
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException {
 
@@ -45,7 +45,7 @@ public class Instructions extends BasicGameState {
 		g.drawString("Press 'I' to return back to home screen", 0, 385);
 
 	}
-
+	//checks if i is pressed and brings you to the instructions menu
 	@Override
 	public void update(GameContainer gc, StateBasedGame arg1, int arg2) throws SlickException {
 		if (gc.getInput().isKeyPressed(Input.KEY_I)) {

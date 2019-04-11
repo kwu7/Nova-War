@@ -30,12 +30,12 @@ public class Shot {
 		this.ship = ship;
 
 	}
-
+	//moves the shot up or down the screen depending on which ship shhots it
 	public void update(int t) {
 		if (ship.equals("p1")) {
 			if ((pos.y < 399 && pos.y > 0) && Play.hit1 == false) {
 				Vector2f actSpeed = speed.copy();
-				actSpeed.scale(t / 300f);
+				actSpeed.scale(t / 150f);
 				pos.y -= actSpeed.y;
 				alive = true;
 				++life;
@@ -47,22 +47,22 @@ public class Shot {
 		} else {
 			if ((pos.y < 399 && pos.y > 0) && Play.hit2 == false) {
 				Vector2f actSpeed = speed.copy();
-				actSpeed.scale(t / 300f);
+				actSpeed.scale(t / 100f);
 				pos.y += actSpeed.y;
 				alive = true;
 				++life;
 			} else {
-				pos.y = Play.p2.getYPos() + 20;
+				pos.y = Play.p2.getYPos() + 40;
 				pos.x = Play.p2.getXPos();
 			}
 		}
 	}
-
+	//renders a shot
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		g.setColor(Color.pink);
+		g.setColor(Color.cyan);
 		g.fillOval(pos.x, pos.y, 10, 10);
 	}
-
+	//returns whether a shot is alive
 	public boolean getAlive() {
 		return alive;
 	}
@@ -74,6 +74,6 @@ public class Shot {
 	public double getY() {
 		return this.pos.y;
 	}
-	// removes shot from screen
+
 
 }
