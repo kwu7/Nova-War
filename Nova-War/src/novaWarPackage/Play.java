@@ -19,12 +19,9 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Play extends BasicGameState {
 	public static Ship p1, p2;
 	Image player1, player2;
-
 	Image shot;
 	public static boolean hit1;
 	public static boolean hit2;
-
-
 
 	public Play(int play) {
 
@@ -39,15 +36,11 @@ public class Play extends BasicGameState {
 		player1 = new Image("IMG/ship.png");
 		player2 = new Image("IMG/ship.png", true, 10);
 
-		shot = new Image("IMG/7062bbab49726403b4efb40d856412f0.gif");
 		p1 = new Ship(50, 50, player1, shot, 320, 320, "p1");
 		p2 = new Ship(50, 50, player2, shot, 40, 40, "p2");
 		
 		p1.init();
 		p2.init();
-
-
-	
 	}
 
 	@Override
@@ -67,17 +60,12 @@ public class Play extends BasicGameState {
 		g.setColor(Color.green);
 		}
 		else {
-			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);
-			
+			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);	
 		}
-		
-		
-		
 	}
 
 	@Override
 	public void update(GameContainer controller, StateBasedGame sbg, int t) throws SlickException {
-
 		p1.update(controller, sbg, t, true);
 		p2.update(controller, sbg, t, false);
 		hit1 =  checkHits(p1.project, p2);
@@ -95,8 +83,6 @@ public class Play extends BasicGameState {
 				sbg.enterState(0);
 			}
 		}
-		
-		
 	}
 
 
@@ -134,8 +120,8 @@ public class Play extends BasicGameState {
 			ship.minusHp(4);
 			hit = true;
 		}
+    
 		return hit;
-
 	}
-
 }
+

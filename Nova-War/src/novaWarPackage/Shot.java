@@ -41,10 +41,8 @@ public class Shot {
 				++life;
 
 			} else {
-
 				pos.y = Play.p1.getYPos();
 				pos.x = Play.p1.getXPos();
-
 			}
 		} else {
 			if ((pos.y < 399 && pos.y > 0) && Play.hit2 == false) {
@@ -53,22 +51,16 @@ public class Shot {
 				pos.y += actSpeed.y;
 				alive = true;
 				++life;
-
 			} else {
-
 				pos.y = Play.p2.getYPos() + 20;
 				pos.x = Play.p2.getXPos();
-
 			}
 		}
-
 	}
 
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-
 		g.setColor(Color.pink);
 		g.fillOval(pos.x, pos.y, 10, 10);
-
 	}
 
 	public boolean getAlive() {
