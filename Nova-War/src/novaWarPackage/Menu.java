@@ -1,6 +1,7 @@
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -12,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
 	Image play;
 	Image exit;
+	Font f;
 	
 	public Menu(int state) {
 		
@@ -30,6 +32,7 @@ public class Menu extends BasicGameState {
 	public void render(GameContainer arg0, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("NOVA_WAR", 150, 50);
 		g.drawString("Wu Conflict",140, 80);
+		g.drawString("Press 'I' for instructions", 0, 385);
 		play.draw(120, 150, .2f);
 	}
 
@@ -42,7 +45,7 @@ public class Menu extends BasicGameState {
 				sbg.enterState(1);
 			}
 		}
-		if(arg0.getInput().isKeyPressed(Input.KEY_D)) {
+		if(arg0.getInput().isKeyPressed(Input.KEY_I)) {
 			sbg.enterState(2);
 		}
 		
