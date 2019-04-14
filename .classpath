@@ -16,5 +16,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Nova-War/Libraries/Windows"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/lib/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="Libraries/lib/jorbis-0.0.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,4 +1,5 @@
 
+
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
@@ -16,11 +17,11 @@ public class Ship extends Entity {
 	private int hp;
 	private int damage;
 	protected Image img;
-	protected Shot project;
+	public Shot project;
 	protected String name;
 	
-	//creates a ship
-	public Ship(int hp, int damage, Image img,  float xPos, float yPos, String name) {
+
+	public Ship(int hp, int damage, Image img, Image shotI, float xPos, float yPos, String name) {
 
 
 		super(xPos, yPos);
@@ -52,12 +53,12 @@ public class Ship extends Entity {
   public void init() throws SlickException  {
 		project = new Shot(new Vector2f(this.getXPos(), this.getYPos()), new Vector2f(0,60), 50, this.name);
 }
-  	//renders a ship
+  
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
 		getImg().draw(getXPos(), getYPos(), .2f);
 		project.render(gc, g);
 	}
-	//updates the position of the ship based on which button is being pressed for both ships
+
 	public void update(GameContainer controller, StateBasedGame arg1, int t, boolean player1) throws SlickException {
 		project.update(t);
 		if (!player1) {
