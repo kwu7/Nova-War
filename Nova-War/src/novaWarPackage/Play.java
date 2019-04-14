@@ -76,7 +76,7 @@ public class Play extends BasicGameState {
 			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);	
 		}
 		}
-		//g.drawString(String.format("%f%n %f", p1.getYPos(), p2.getYPos()), 10, 200);	
+		g.drawString(String.format("%f%n%f", p1.getXPos() - p2.getXPos(), p1.getYPos() - p2.getYPos()), 10, 200);	
 	}
 	
 	//updates all the parameters of both ships
@@ -128,13 +128,13 @@ public class Play extends BasicGameState {
 		
 		shipW = ship.getImg().getWidth();
 		shipL = ship.getImg().getHeight();
-		shipX = ship.getXPos() + (.1* shipW) / 2;
-		shipY = ship.getYPos()+ (.1 * shipL) / 2;
+		shipX = ship.getXPos() + (.15 * shipW) / 2;
+		shipY = ship.getYPos()+ (.15 * shipL) / 2;
 		shotX = s.getX();
 		shotY = s.getY();
 
-		diffx = .1 * shotW + .1 * shipW;
-		diffy = .1 * shotL + .1 * shipL;
+		diffx = .1 * shotW + .15 * shipW;
+		diffy = .1 * shotL + .15 * shipL;
 		if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx)
 				&& (shotY - shipY >= -(diffy) && shotY - shipY <= diffy)) {
 			ship.minusHp(40);
@@ -147,32 +147,44 @@ public class Play extends BasicGameState {
 	public void CheckColision(){
 	double shipDiffX = p1.getXPos() - p2.getXPos();
 	double shipDiffY = p1.getYPos() - p2.getYPos();
-	if( p1.getYPos() < 160) {
+	/*if( p1.getYPos() < 160) {
 		p1.yPos = 210;
 		
 	}
 	if( p2.getYPos() > 160) {
 		p2.yPos = 120;
 		
-	}
+	}*/
 	
-	/*if((shipDiffX <= 35 && shipDiffY <= 60 ) && (shipDiffX >= 0 && shipDiffY >= 0)) {
-		p1.minusHp(40);
-		p2.minusHp(40);
-		p1.setXPos(p1.getXPos() + 40);
-		p2.setXPos(p2.getXPos() - 40);
-		p1.setXPos(p1.getYPos() + 40);
-		p2.setXPos(p2.getYPos() - 40);
+	
+	if(((shipDiffX <= 30) && (shipDiffX >= 0)) && (shipDiffY <= 30 && shipDiffY >= 0 )) {
+		p1.minusHp(5);
+		p2.minusHp(5);
+		p1.xPos += 30;
+		p2.xPos -= 30;
 		System.out.print("Love");
 	}
-	 if((shipDiffX >= -40 && shipDiffY >= -60 ) && (shipDiffX <= 0 && shipDiffY <= -20)){
-		p1.minusHp(40);
-		p2.minusHp(40);
-		p1.setXPos(p1.getXPos() - 40);
-		p2.setXPos(p2.getXPos() + 40);
-		p1.setXPos(p1.getYPos() - 60);
-		p2.setXPos(p2.getYPos() + 60);
-	}*/
+	if((shipDiffX >= -30 ) && (shipDiffX <= 0) && (shipDiffY >= -30 && shipDiffY <= 0 )){
+		p1.minusHp(5);
+		p2.minusHp(5);
+		p1.xPos -= 30;
+		p2.xPos += 30;
+		
+	}
+	if(((shipDiffY <= 45) && (shipDiffY >= 0)) && ((shipDiffX >= -30 && shipDiffX <= 0 ) || (shipDiffX <= 30 && shipDiffX >= 0 ))) {
+		p1.minusHp(5);
+		p2.minusHp(5);
+		p1.yPos += 30;
+		p2.yPos -= 30;
+		System.out.print("Love");
+	}
+	if((shipDiffY >= -45 ) && (shipDiffY <= 0) && ((shipDiffX >= -30 && shipDiffX <= 0 ) || (shipDiffX <= 30 && shipDiffX >= 0 ))){
+		p1.minusHp(5);
+		p2.minusHp(5);
+		p1.yPos -= 30;
+		p2.yPos += 30;
+		
+	}
 	
 	}
 }

@@ -63,36 +63,36 @@ public class Ship extends Entity {
 		if (!player1) {
 			if (controller.getInput().isKeyDown(Input.KEY_A)) {
 				if (!(getXPos() <= 0))
-					xPos -= 6;
+					xPos -= 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_D)) {
 				if (!((getXPos() + 33) >= 400))
-					xPos += 6;
+					xPos += 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_W)) {
 				if (!(getYPos() <= 0))
-					yPos -= 6;
+					yPos -= 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_S)) {
 				if (!(getYPos() + 60 >= 400))
-					yPos += 6;
+					yPos += 10;
 			}
 		} else {
 			if (controller.getInput().isKeyDown(Input.KEY_DOWN)) {
 				if (!(getYPos() + 60 >= 400))
-					yPos += 6;
+					yPos += 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_UP)) {
 				if (!(getYPos() <= 0))
-					yPos -= 6;
+					yPos -= 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_LEFT)) {
 				if (!(getXPos() <= 0))
-					xPos -= 6;
+					xPos -= 10;
 			}
 			if (controller.getInput().isKeyDown(Input.KEY_RIGHT)) {
 				if (!(getXPos() + 33 >= 400))
-					xPos += 6;
+					xPos += 10;
 			}
 		}
 	}
