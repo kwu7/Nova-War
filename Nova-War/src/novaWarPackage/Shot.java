@@ -38,7 +38,7 @@ public class Shot {
 		if (ship.equals("p1")) {
 			if ((pos.y < 399 && pos.y > 0) && Play.hit1 == false) {
 				Vector2f actSpeed = speed.copy();
-				actSpeed.scale(t / 150f);
+				actSpeed.scale(t / 120f);
 				pos.y -= actSpeed.y;
 				alive = true;
 				++life;
@@ -51,7 +51,7 @@ public class Shot {
 		} else {
 			if ((pos.y < 399 && pos.y > 0) && Play.hit2 == false) {
 				Vector2f actSpeed = speed.copy();
-				actSpeed.scale(t / 150f);
+				actSpeed.scale(t / 120f);
 				pos.y += actSpeed.y;
 				alive = true;
 				++life;
@@ -66,6 +66,7 @@ public class Shot {
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		g.setColor(Color.cyan);
 		g.fillOval(pos.x, pos.y, 10, 10);
+		
 	}
 
 	public boolean getAlive() {
