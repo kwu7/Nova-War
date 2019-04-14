@@ -12,13 +12,14 @@ public class NovaWar extends StateBasedGame {
 	public static final int play = 1;
 	public static final int instructions = 2;
 
+	
 	public NovaWar(String title) {
 		super(title);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
 		this.addState(new Instructions(instructions));
 	}
-
+	//creates the game/window 
 	public static void main(String[] args) throws SlickException {
 		AppGameContainer app;
 		try {
@@ -34,7 +35,8 @@ public class NovaWar extends StateBasedGame {
 		}
 
 	}
-
+	
+	//initializes the menu
 	@Override
 	public void initStatesList(GameContainer gC) throws SlickException {
 		this.getState(menu).init(gC, this);

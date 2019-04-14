@@ -1,4 +1,5 @@
 
+
 package novaWarPackage;
 
 import org.newdawn.slick.Color;
@@ -88,8 +89,8 @@ public class Play extends BasicGameState {
 			Shot.shoot.stop();
 			
 			if (controller.getInput().isKeyDown(Input.KEY_SPACE)) {
-				p1.setHp(50);
-				p2.setHp(50);
+				p1.setHp(400);
+				p2.setHp(400);
 
 				p1.setXPos(320);
 				p1.setYPos(360);
@@ -137,7 +138,7 @@ public class Play extends BasicGameState {
 		if(!gameOver)
 		if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx)
 				&& (shotY - shipY >= -(diffy) && shotY - shipY <= diffy)) {
-			ship.minusHp(4);
+			ship.minusHp(40);
 			hitSound.play();
 			hit = true;
 		}
@@ -152,3 +153,4 @@ public class Play extends BasicGameState {
 		return false;
 	}
 }
+

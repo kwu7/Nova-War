@@ -1,3 +1,4 @@
+
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
@@ -66,3 +67,4 @@ public class Menu extends BasicGameState {
 	}
 
 }
+
