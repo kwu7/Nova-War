@@ -1,5 +1,4 @@
 
-
 package novaWarPackage;
 
 import org.lwjgl.input.Mouse;
@@ -99,3 +98,4 @@ public class Ship extends Entity {
 	}
 
 }
+
