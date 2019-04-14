@@ -12,7 +12,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
+/**
+ * creates main menu for game
+ * @author Yveder Joseph
+ * @author Kevin Wu
+ * @author Alex Creem
+ *  */
 public class Menu extends BasicGameState {
 	Image play;
 	Image exit;
@@ -30,7 +35,6 @@ public class Menu extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		play = new Image("IMG/Text-Button-Example.png");
-		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
 		back = new Music("Sound/Scanglobe_-_02_-_SODAR.ogg");
 		click = new Sound("Sound/Click2-Sebastian-759472264.wav");
 		back.loop(1f, .8f);
