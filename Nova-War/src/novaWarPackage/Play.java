@@ -73,7 +73,7 @@ public class Play extends BasicGameState {
 		if(p1.getHp() < 1 && p2.getHp() < 1) {
 			g.drawString(String.format("Two warriors leave this plane in disgrace%nto begin anew press space"), 10, 200);
 			
-			if((endTimer >= 100) && (endTimer <= 1500)) {
+			if((endTimer >= 100) && (endTimer <= 1200)) {
 			explosionAnim.draw(p1.getXPos(), p1.getYPos());
 			explosionAnim.draw(p2.getXPos(), p2.getYPos());
 			}
@@ -85,7 +85,7 @@ public class Play extends BasicGameState {
 			
 			g.setColor(Color.green);
 		} else {
-			if((endTimer >= 100) && (endTimer <= 1500)) {
+			if((endTimer >= 100) && (endTimer <= 1200)) {
 			explosionAnim.draw(p1.getXPos(), p1.getYPos());
 			}
 			g.drawString("Player 2 Wins! -- press space to continue", 10, 200);
@@ -95,7 +95,7 @@ public class Play extends BasicGameState {
 			g.fillRect(0, 0, p2.getHp(), 10);
 			g.setColor(Color.green);
 		} else {
-			if((endTimer >= 100) && (endTimer <= 1500)) {
+			if((endTimer >= 100) && (endTimer <= 1200)) {
 			explosionAnim.draw(p2.getXPos(), p2.getYPos());
 			}
 			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);

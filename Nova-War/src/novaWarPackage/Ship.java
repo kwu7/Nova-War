@@ -54,11 +54,15 @@ public class Ship extends Entity {
 }
   
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
+		
 		getImg().draw(getXPos(), getYPos(), .2f);
+		if(!Play.gameOver) {
 		project.render(gc, g);
+		}
 	}
 
 	public void update(GameContainer controller, StateBasedGame arg1, int t, boolean player1) throws SlickException {
+		if(!Play.gameOver) {
 		project.update(t);
 		if (!player1) {
 			if (controller.getInput().isKeyDown(Input.KEY_A)) {
@@ -94,6 +98,7 @@ public class Ship extends Entity {
 				if (!(getXPos() + 33 >= 400))
 					xPos += 6;
 			}
+		}
 		}
 	}
 
