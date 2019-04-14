@@ -16,7 +16,7 @@ public class Ship extends Entity {
 	private int hp;
 	private int damage;
 	protected Image img;
-	protected Shot project;
+	public Shot project;
 	protected String name;
 	
 

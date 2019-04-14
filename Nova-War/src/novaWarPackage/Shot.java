@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.Graphics;
@@ -21,14 +22,15 @@ public class Shot {
 	final static int width = 10;
 	final static int height = 10;
 	private final String ship;
+	static Sound shoot;
 
 	// called from ship
-	public Shot(Vector2f pos, Vector2f speed, int damage, String ship) {
+	public Shot(Vector2f pos, Vector2f speed, int damage, String ship) throws SlickException {
 		this.pos = pos;
 		this.speed = speed;
 		this.damage = damage;
 		this.ship = ship;
-
+		shoot = new Sound("Sound/pew-pew-lame-sound-effect.wav");
 	}
 
 	public void update(int t) {
@@ -41,6 +43,7 @@ public class Shot {
 				++life;
 
 			} else {
+				shoot.play();
 				pos.y = Play.p1.getYPos();
 				pos.x = Play.p1.getXPos();
 			}
@@ -52,6 +55,7 @@ public class Shot {
 				alive = true;
 				++life;
 			} else {
+				shoot.play();
 				pos.y = Play.p2.getYPos() + 20;
 				pos.x = Play.p2.getXPos();
 			}
@@ -73,6 +77,10 @@ public class Shot {
 
 	public double getY() {
 		return this.pos.y;
+	}
+	
+	public Vector2f getPos() {
+		return pos;
 	}
 	// removes shot from screen
 

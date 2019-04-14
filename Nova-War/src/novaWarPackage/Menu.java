@@ -6,7 +6,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -14,6 +16,8 @@ public class Menu extends BasicGameState {
 	Image play;
 	Image exit;
 	Font f;
+	Music back;
+	static Sound click;
 	
 	public Menu(int state) {
 		
@@ -26,7 +30,9 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		play = new Image("IMG/Text-Button-Example.png");
 		exit = new Image("IMG/jay-laws-start-game-button-png-no-glitch.jpg");
-
+		back = new Music("Sound/Scanglobe_-_02_-_SODAR.ogg");
+		click = new Sound("Sound/Click2-Sebastian-759472264.wav");
+		back.loop(1f, .8f);
 	}
 
 	@Override
@@ -35,7 +41,6 @@ public class Menu extends BasicGameState {
 		g.drawString("Wu Conflict",140, 80);
 		g.drawString("Press 'I' for instructions", 0, 385);
 		play.draw(120, 150, .2f);
-
 	}
 
 	@Override
@@ -44,10 +49,12 @@ public class Menu extends BasicGameState {
 		int posY = Mouse.getY();
 		if((posX > 120 && posX < play.getWidth() + 120) && posY > 89 && posY <  play.getWidth() + 209) {
 			if(Mouse.isButtonDown(0)) {
+				click.play();
 				sbg.enterState(1);
 			}
 		}
 		if(arg0.getInput().isKeyPressed(Input.KEY_I)) {
+			click.play();
 			sbg.enterState(2);
 		}
 		

@@ -11,10 +11,10 @@ public class Instructions extends BasicGameState {
 	private String obj = "OBJECTIVE";
 	private String obj2 = "A 1v1 battle royale in";
 	private String obj3 = "which you have to";
-	private String obj4 = "kill your opponent";
+	private String obj4 = "kill your opponent!!";
 	private String inst = "INSTRUCTIONS";
-	private String s1 = "Player1 uses ASDW to move";
-	private String s2 = "Player2 uses ArrowKeys to move";
+	private String s1 = "Player1 uses Arrow Keys to move";
+	private String s2 = "Player2 uses AWSD to move";
 	private String credit = "Made by Yveder, Alex, and Kevin";
 
 	public Instructions(int i) {
@@ -41,7 +41,7 @@ public class Instructions extends BasicGameState {
 		g.drawString(s1, 50, 175);
 		g.drawString(s2, 50, 190);
 		g.drawString(credit, 50, 220);
-		
+	
 		g.drawString("Press 'I' to return back to home screen", 0, 385);
 
 	}
@@ -50,6 +50,7 @@ public class Instructions extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame arg1, int arg2) throws SlickException {
 		if (gc.getInput().isKeyPressed(Input.KEY_I)) {
 			arg1.enterState(0);
+			Menu.click.play();
 		}
 
 	}

@@ -8,6 +8,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.ShapeFill;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Rectangle;
 
 import org.newdawn.slick.geom.Shape;
@@ -22,6 +23,10 @@ public class Play extends BasicGameState {
 	Image shot;
 	public static boolean hit1;
 	public static boolean hit2;
+	static boolean gameOver;
+	static int endTimer = 0;
+	Sound boom;
+	Sound hitSound;
 
 	public Play(int play) {
 
@@ -38,29 +43,31 @@ public class Play extends BasicGameState {
 
 		p1 = new Ship(50, 50, player1, shot, 320, 320, "p1");
 		p2 = new Ship(50, 50, player2, shot, 40, 40, "p2");
-		
+
 		p1.init();
 		p2.init();
+		
+		gameOver = false;
+		
+		boom = new Sound("Sound\\Flashbang-Kibblesbob-899170896.wav");
+		hitSound = new Sound("Sound/roblox-death-sound_1.wav");
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g) throws SlickException {
 		if (p1.getHp() > 1) {
-		p1.render(gc, arg1, g);
-		g.fillRect(350, 390, p1.getHp(), 10);
-		g.setColor(Color.green);
-		}
-		else {
+			p1.render(gc, arg1, g);
+			g.fillRect(400, 390, -(p1.getHp() * 2), 10);
+			g.setColor(Color.green);
+		} else {
 			g.drawString("Player 2 Wins! -- press space to continue", 10, 200);
-			
 		}
 		if (p2.getHp() > 1) {
-		p2.render(gc, arg1, g);
-		g.fillRect(0, 0, p2.getHp(), 10);
-		g.setColor(Color.green);
-		}
-		else {
-			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);	
+			p2.render(gc, arg1, g);
+			g.fillRect(0, 0, p2.getHp() * 2, 10);
+			g.setColor(Color.green);
+		} else {
+			g.drawString("Player 1 Wins! -- press space to continue", 10, 200);
 		}
 	}
 
@@ -68,23 +75,34 @@ public class Play extends BasicGameState {
 	public void update(GameContainer controller, StateBasedGame sbg, int t) throws SlickException {
 		p1.update(controller, sbg, t, true);
 		p2.update(controller, sbg, t, false);
-		hit1 =  checkHits(p1.project, p2);
-		hit2 =  checkHits(p2.project, p1);
+		hit1 = checkHits(p1.project, p2);
+		hit2 = checkHits(p2.project, p1);
+		gameOver = checkGameStatus();
 		
-		if (p1.getHp() < 1 || p2.getHp() <1) {
+
+		if (gameOver) {
+			endTimer += t;
+			if(endTimer == 100) {
+			boom.play();	
+			}
+			Shot.shoot.stop();
+			
 			if (controller.getInput().isKeyDown(Input.KEY_SPACE)) {
 				p1.setHp(50);
 				p2.setHp(50);
-				
+
 				p1.setXPos(320);
-				p1.setYPos(60);
+				p1.setYPos(360);
 				p2.setXPos(40);
 				p2.setYPos(40);
+				
+				endTimer = 0;
+				
+				Menu.click.play();
 				sbg.enterState(0);
 			}
 		}
 	}
-
 
 	@Override
 	public int getID() {
@@ -105,23 +123,32 @@ public class Play extends BasicGameState {
 		double shotW = 10;// these 2 numbers are defined when creating the shot
 		double shotL = 10;
 		boolean hit = false;
-		
+
 		shipW = ship.getImg().getWidth();
 		shipL = ship.getImg().getHeight();
-		shipX = ship.getXPos() + (.1* shipW) / 2;
-		shipY = ship.getYPos()+ (.1 * shipL) / 2;
+		shipX = ship.getXPos() + (.1 * shipW) / 2;
+		shipY = ship.getYPos() + (.1 * shipL) / 2;
 		shotX = s.getX();
 		shotY = s.getY();
 
 		diffx = .1 * shotW + .1 * shipW;
 		diffy = .1 * shotL + .1 * shipL;
+		
+		if(!gameOver)
 		if ((shotX - shipX >= -(diffx) && shotX - shipX <= diffx)
 				&& (shotY - shipY >= -(diffy) && shotY - shipY <= diffy)) {
 			ship.minusHp(4);
+			hitSound.play();
 			hit = true;
 		}
-    
+
 		return hit;
 	}
+	
+	public boolean checkGameStatus() {
+		if (p1.getHp() < 1 || p2.getHp() < 1) {
+			return true;
+		}
+		return false;
+	}
 }
-
