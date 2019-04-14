@@ -57,7 +57,7 @@ public class Shot {
 				++life;
 			} else {
 				shoot.play();
-				pos.y = Play.p2.getYPos() + 20;
+				pos.y = Play.p2.getYPos() + 50;
 				pos.x = Play.p2.getXPos();
 			}
 		}
