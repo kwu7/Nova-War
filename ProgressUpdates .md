@@ -81,6 +81,7 @@
 * Limit both ships to not cross a middle line
 * Game ends when a ship reaches 0 hp and brings back to menu
 * Get both ships to shoot in opposite directions
+* Add sound
 
 ### Any blocking issues/challenges need to be addressed?
 * None
