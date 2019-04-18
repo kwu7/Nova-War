@@ -6,13 +6,20 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-
+/**
+ * This is the hub of the game where all the separate classes are connected
+ * 
+ * @author Yveder Joseph
+ * @author Kevin Wu
+ * @author Alex Creem
+ * 
+ *   */
 public class NovaWar extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
 	public static final int instructions = 2;
 
-	
+	//Adds all the different stages
 	public NovaWar(String title) {
 		super(title);
 		this.addState(new Menu(menu));

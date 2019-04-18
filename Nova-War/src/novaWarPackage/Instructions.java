@@ -7,7 +7,11 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
+/**
+ * This displays the instructions for the users
+ * 
+ * @author Kevin Wu
+ *  */
 public class Instructions extends BasicGameState {
 	private String obj = "OBJECTIVE";
 	private String obj2 = "A 1v1 battle royale in";
@@ -17,9 +21,10 @@ public class Instructions extends BasicGameState {
 	private String s1 = "Player1 uses Arrow Keys to move";
 	private String s2 = "Player2 uses AWSD to move";
 	private String credit = "Made by Yveder, Alex, and Kevin";
+	private int i;
 
 	public Instructions(int i) {
-
+		this.i = i;
 	}
 
 	public static void main(String[] args) {
@@ -30,7 +35,7 @@ public class Instructions extends BasicGameState {
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 
 	}
-
+	// This renders in the text that provides the instructions to the users
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException {
 
@@ -46,7 +51,7 @@ public class Instructions extends BasicGameState {
 		g.drawString("Press 'I' to return back to home screen", 0, 385);
 
 	}
-
+	//this checks for if the key I is pressed to return the user to the game menu
 	@Override
 	public void update(GameContainer gc, StateBasedGame arg1, int arg2) throws SlickException {
 		if (gc.getInput().isKeyPressed(Input.KEY_I)) {
@@ -55,10 +60,10 @@ public class Instructions extends BasicGameState {
 		}
 
 	}
-
+	//returns the id for instructions stage
 	@Override
 	public int getID() {
-		return 2;
+		return this.i;
 	}
 
 }

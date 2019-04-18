@@ -24,14 +24,16 @@ public class Menu extends BasicGameState {
 	Font f;
 	Music back;
 	static Sound click;
+	private int state;
 	
 	public Menu(int state) {
+		this.state = state;
 		
 	}
 	public static void main(String[] args) {
 		
 	}
-
+	//Initializes all sound and image on the game menu
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		play = new Image("IMG/Text-Button-Example.png");
@@ -39,7 +41,7 @@ public class Menu extends BasicGameState {
 		click = new Sound("Sound/Click2-Sebastian-759472264.wav");
 		back.loop(1f, .8f);
 	}
-
+	//Renders text and images for game menu
 	@Override
 	public void render(GameContainer arg0, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("NOVA_WAR", 150, 50);
@@ -47,7 +49,9 @@ public class Menu extends BasicGameState {
 		g.drawString("Press 'I' for instructions", 0, 385);
 		play.draw(120, 150, .2f);
 	}
-
+	/*Creates hit box for new game button and checks for if I is presses as to enter
+	  information menu
+	*/
 	@Override
 	public void update(GameContainer arg0, StateBasedGame sbg, int arg2) throws SlickException {
 		int posX = Mouse.getX();
@@ -64,10 +68,10 @@ public class Menu extends BasicGameState {
 		}
 		
 	}
-
+	//returns id for menu stage
 	@Override
 	public int getID() {
-		return 0;
+		return this.state;
 	}
 
 }
