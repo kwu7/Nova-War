@@ -18,9 +18,21 @@ We used Slick2D, a Java game development library, to render images and shapes, i
 - Week #2-3: 
   1. Added Alex to the group
   2. Begin reading/watching Slick2D tutorial and simplementing parts.
+  3. Implement ship movement.
 - Week #4-6
-  1.Code what needs to be coded. Adapt to necessary changes.
-
+  1. Implement shooting functionality.
+  2. Implement hit detection.
+  3. Add sound.
+  4. Add death animation.
+  
+## Getting Started 
+- Install
+  1. Go to https://github.com/kwu7/Nova-War
+  2. Fork the repository 
+  3. Clone the forked repository
+- Run
+  1. Open the cloned repository in eclipse
+  2. run the NovaWar.java file as a java application.
 ## Team members
 - Yvedear Jospeh (Front-end/Back-end Developer)
 - Kevin Wu (Front-end/Back-end Developer)
