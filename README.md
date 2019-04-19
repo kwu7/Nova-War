@@ -33,6 +33,9 @@ We used Slick2D, a Java game development library, to render images and shapes, i
 - Run
   1. Open the cloned repository in eclipse
   2. run the NovaWar.java file as a java application.
+## Features 
+  - 1v1 space combat
+  - Quality game soundtrack 
 ## Team members
 - Yvedear Jospeh (Front-end/Back-end Developer)
 - Kevin Wu (Front-end/Back-end Developer)
