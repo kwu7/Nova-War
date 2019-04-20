@@ -40,4 +40,6 @@ We used Slick2D, a Java game development library, to render images and shapes, i
 - Yvedear Jospeh (Front-end/Back-end Developer)
 - Kevin Wu (Front-end/Back-end Developer)
 - Alex Creem (Front-end/Back-end Developer)
+## Video Demo
+https://youtu.be/1BF3VoqUBrs
 
