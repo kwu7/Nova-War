@@ -35,11 +35,14 @@ We used Slick2D, a Java game development library, to render images and shapes, i
   2. run the NovaWar.java file as a java application.
 ## Features 
   - 1v1 space combat
-  - Quality game soundtrack 
+  - Quality game soundtrack
+ 
+## Demo video
+   https://youtu.be/1BF3VoqUBrs
+
+
 ## Team members
 - Yvedear Jospeh (Front-end/Back-end Developer)
 - Kevin Wu (Front-end/Back-end Developer)
 - Alex Creem (Front-end/Back-end Developer)
-## Video Demo
-https://youtu.be/1BF3VoqUBrs
 
