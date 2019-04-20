@@ -1,7 +1,7 @@
 # **Nova-War** 
 ## Project Description (explain the what/why/how)
 ### What
-A 2D multiplayer space shooter in which you have to kill your opponment to win. Player1 will move with AWSD and Player2 will move with Arrow Keys. Both ships are automatically firing.
+A 2D multiplayer space shooter in which you have to kill your opponent to win. Player1 will move with AWSD and Player2 will move with Arrow Keys. Both ships are automatically firing.
 ### Why
 We realized that multiplayer battle royale and player vs player games are very popular. Also, we grew up playing video games and thought that this would be a good homage to our childhood.
 ### How
